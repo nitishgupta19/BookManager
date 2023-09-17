@@ -74,6 +74,4 @@ If you'd like to contribute to this project, please follow these guidelines:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 Feel free to explore the code and use it as a starting point for your book manager application! If you encounter any issues or have questions, please open an issue in the repository. Happy coding!
