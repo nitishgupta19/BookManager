@@ -1,0 +1,44 @@
+<div>
+  <div class="text-center">
+    <button class="btn btn-primary" routerLink="create">Create</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="pagedItems && pagedItems.length">
+      <tr
+        *ngFor="
+          let pagedItems of pagedItems
+            | paginate
+              : {
+                  itemsPerPage: itemsPerPage,
+                  currentPage: currentPage,
+                  totalItems: totalBooks
+                }
+        "
+      >
+        <td>
+          <a class="pe-auto" routerLink="{{ pagedItems?.id }}">{{
+            pagedItems.name | titlecase
+          }}</a>
+        </td>
+        <td>{{ pagedItems.author | titlecase }}</td>
+        <td>{{ pagedItems.description | titlecase }}</td>
+        <td>{{ pagedItems.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination-controls" *ngIf="pagedItems && pagedItems.length">
+    <pagination-controls (pageChange)="onPageChange($event)">
+    </pagination-controls>
+  </div>
+  <div *ngIf="pagedItems && pagedItems.length === 0">
+    <h3>No Book Found</h3>
+  </div>
+</div>
